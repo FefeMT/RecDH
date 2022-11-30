@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= movies.title %></title>
+</head>
+<body>
+        <h1><%= movies.title %></h1>    
+        <p>PUNTAJE: <%= movies.rating %> </p>
+        <p>PREMIOS: <%= movies.awards %> </p>
+        <p>FECHA DE ESTRENO: <%= movies.release_date %> </p>
+        <p>DURACION: <%= movies.length + ' minutes'%> </p>
+        <% if (movies.genre) { %>
+        <p>GENERO: <%=movies.genre.name%></p>
+        <% } %>
+        <h3>Actores:</h3>
+        <ul>
+            <% for (let j = 0; j < movies.actors.length; j ++) { %>
+            <li>
+                <%= movies.actors[j].first_name + movies.actors[j].last_name %>
+            </li>
+            <% } %>
+        </ul>
+        <a href="/edit/:id">Editar informacion</a>
+        <a href="/">Volver</a>
+</body>
+</html>
