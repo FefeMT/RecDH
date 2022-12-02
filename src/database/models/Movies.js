@@ -1,11 +1,15 @@
 const model = function(sequelize,DataTypes){
     let alias = 'movie';
     let columns = {
-        created_at: {
+        createdAt: {
             type: DataTypes.DATE,
             allowNull: true
         },
-        updated_at: {
+        updatedAt: {
+            type: DataTypes.DATE,
+            allowNull: true
+        },
+        deletedAt: {
             type: DataTypes.DATE,
             allowNull: true
         },
@@ -32,7 +36,8 @@ const model = function(sequelize,DataTypes){
     }
     let config = {
         tableName: "movies",
-        timestamps: false
+        paranoid: true,
+        timestamps: true
     }
     const Movie = sequelize.define(alias,columns,config);
 
@@ -46,10 +51,9 @@ const model = function(sequelize,DataTypes){
             through: 'actor_movie',
             foreignKey: 'movie_id',
             otherKey: 'actor_id',
-            timestamps: false
+            timestamps: true
         })
     }
-
     return Movie;
 }
 

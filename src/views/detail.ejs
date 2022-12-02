@@ -23,7 +23,10 @@
             </li>
             <% } %>
         </ul>
-        <a href="/edit/:id">Editar informacion</a>
+        <a href="/edit/<%=movies.id%>">Editar</a>
+        <form method="POST" action="/delete/<%=movies.id%>">
+            <button type="submit">Borrar</button>
+        </form>
         <a href="/">Volver</a>
 </body>
 </html>

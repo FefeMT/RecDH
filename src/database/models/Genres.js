@@ -1,10 +1,15 @@
 const model = function(sequelize,DataTypes){
     let alias = 'genre';
     let columns = {
-        created_at: {
-            type: DataTypes.DATE
+        createdAt: {
+            type: DataTypes.DATE,
+            allowNull: true
         },
-        updated_at: {
+        updatedAt: {
+            type: DataTypes.DATE,
+            allowNull: true
+        },
+        deletedAt: {
             type: DataTypes.DATE,
             allowNull: true
         },
@@ -20,6 +25,7 @@ const model = function(sequelize,DataTypes){
     }
     let config = {
         tableName: "genres",
+        paranoid: true,
         timestamps: false
     }
     const Genre = sequelize.define(alias,columns,config);

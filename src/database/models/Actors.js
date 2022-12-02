@@ -1,11 +1,15 @@
 const model = function(sequelize,DataTypes){
     let alias = 'actor';
     let columns = {
-        created_at: {
+        createdAt: {
             type: DataTypes.DATE,
             allowNull: true
         },
-        updated_at: {
+        updatedAt: {
+            type: DataTypes.DATE,
+            allowNull: true
+        },
+        deletedAt: {
             type: DataTypes.DATE,
             allowNull: true
         },
@@ -25,7 +29,8 @@ const model = function(sequelize,DataTypes){
     }
     let config = {
         tableName: "actors",
-        timestamps: false
+        paranoid: true,
+        timestamps: true
     }
     const Actor = sequelize.define(alias,columns,config);
 
