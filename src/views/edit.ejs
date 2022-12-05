@@ -8,20 +8,59 @@
 </head>
 <body>
     <h1>Editando pelicula <%= movies.title%></h1>
-    <form method="POST" action="/edit/<%=movies.id%>">
+    <form method="POST" action="/edit/<%=movies.id%>?m=PUT">
         <Fieldset>
             <legend>Titulo</legend>
-            <input type="text" id="title" name="title" value="<%= movies.title%>" required>
+            <% if (locals.errors && locals.errors.title) {%>
+                <p class="feedback"><%= locals.errors.title.msg %></p>
+            <% } %>
+            <input type="text" id="title" name="title" <% if (locals.data && data.title) { %>
+                value="<%= data.title %>"
+                <% } else { %>
+                value="<%= movies.title %>"
+                <% } %>
+            >
             <legend>Puntaje</legend>
-            <input type="number" id="rating" name="rating" value="<%= movies.rating%>" required>
+            <% if (locals.errors && locals.errors.rating) {%>
+                <p class="feedback"><%= locals.errors.rating.msg %></p>
+            <% } %>
+            <input type="number" id="rating" name="rating"<% if (locals.data && data.rating) { %>
+                value="<%= data.rating %>"
+                <% } else { %>
+                value="<%= movies.rating %>"
+                <% } %>
+            >
             <legend>Premios</legend>
-            <input type="number" id="awards" name="awards" value="<%= movies.awards%>" required>
+            <% if (locals.errors && locals.errors.awards) {%>
+                <p class="feedback"><%= locals.errors.awards.msg %></p>
+            <% } %>
+            <input type="number" id="awards" name="awards"<% if (locals.data && data.awards) { %>
+                value="<%= data.awards %>"
+                <% } else { %>
+                value="<%= movies.awards %>"
+                <% } %>
+            >
             <legend>Fecha de estreno</legend>
-            <input type="date" id="release_date" name="release_date" value="<%= movies.release_date%>" required>
+            <% if (locals.errors && locals.errors.release_date) {%>
+                <p class="feedback"><%= locals.errors.release_date.msg %></p>
+            <% } %>
+            <input type="date" id="release_date" name="release_date"<% if (locals.data && data.release_date) { %>
+                value="<%= data.release_date %>"
+                <% } else { %>
+                value="<%= movies.release_date %>"
+                <% } %>
+            >
             <legend>Duracion</legend>
-            <input type="number" id="length" name="length" value="<%= movies.length%>">
+            <% if (locals.errors && locals.errors.length) {%>
+                <p class="feedback"><%= locals.errors.length.msg %></p>
+            <% } %>
+            <input type="number" id="length" name="length"<% if (locals.data && data.length) { %>
+                value="<%= data.length %>"
+                <% } else { %>
+                value="<%= movies.length %>"
+                <% } %>
+            >
         </Fieldset>
-
         <button type="submit">Enviar</button>
         <button type="reset">Borrar progreso</button>
     </form>

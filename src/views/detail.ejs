@@ -24,7 +24,7 @@
             <% } %>
         </ul>
         <a href="/edit/<%=movies.id%>">Editar</a>
-        <form method="POST" action="/delete/<%=movies.id%>">
+        <form method="POST" action="/delete/<%=movies.id%>?m=DELETE">
             <button type="submit">Borrar</button>
         </form>
         <a href="/">Volver</a>

@@ -1,4 +1,5 @@
 const db = require('../database/models/index');
+const {validationResult} = require('express-validator');
 
 const home = (req,res) => {
     const all = db.movie.findAll()
@@ -18,6 +19,12 @@ const create = (req,res) => {
     return res.render('create');
 }
 const add = (req,res) => {
+    let results = validationResult(req);
+    if (!results.isEmpty()){
+        let errors = results.mapped();
+        res.render ('create',{ errors: errors, data: req.body})
+    }
+    else {
     let create= db.movie.create({
         title: req.body.title,
         rating: req.body.rating,
@@ -28,6 +35,7 @@ const add = (req,res) => {
     const success = movies => res.redirect('/')
     const error = error => res.send(error)
     return create.then(success).catch(error);
+    }
 }
 const edit = (req,res) => {
     const one = db.movie.findByPk(req.params.id)
@@ -37,6 +45,12 @@ const edit = (req,res) => {
 }
 const save = (req,res) => {
     let find = db.movie.findByPk(req.params.id)
+    let results = validationResult(req);
+    if (!results.isEmpty()){
+        let errors = results.mapped();
+        find.then(movies => res.render('edit', {movies:movies, errors: errors, data: req.body}));
+    }
+    else {
     let update = db.movie.update({
         title: req.body.title,
         rating: req.body.rating,
@@ -51,6 +65,7 @@ const save = (req,res) => {
     const success = res.redirect('/')
     const error = error => res.send(error)
     return find.then(update).then(success).catch(error);
+    }
 }
 const borrar = (req,res) => {
     let find = db.movie.findByPk(req.params.id)

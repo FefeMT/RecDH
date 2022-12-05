@@ -11,15 +11,30 @@
     <form method="POST" action="/add">
         <Fieldset>
             <legend>Titulo</legend>
-            <input type="text" id="title" name="title" required>
+            <% if (locals.errors && locals.errors.title) {%>
+            <p class="feedback"><%= locals.errors.title.msg %></p>
+            <% } %>
+            <input type="text" id="title" name="title" value="<%= locals.data && data.title%>">
             <legend>Puntaje</legend>
-            <input type="number" id="rating" name="rating" required>
+            <% if (locals.errors && locals.errors.rating) {%>
+                <p class="feedback"><%= locals.errors.rating.msg %></p>
+            <% } %>
+            <input type="number" id="rating" name="rating" value="<%= locals.data && data.rating%>">
             <legend>Premios</legend>
-            <input type="number" id="awards" name="awards" required>
+            <% if (locals.errors && locals.errors.awards) {%>
+                <p class="feedback"><%= locals.errors.awards.msg %></p>
+            <% } %>
+            <input type="number" id="awards" name="awards" value="<%= locals.data && data.awards%>">
             <legend>Fecha de estreno</legend>
-            <input type="date" id="release_date" name="release_date" required>
+            <% if (locals.errors && locals.errors.release_date) {%>
+                <p class="feedback"><%= locals.errors.release_date.msg %></p>
+            <% } %>
+            <input type="date" id="release_date" name="release_date" value="<%= locals.data && data.release_date%>">
             <legend>Duracion</legend>
-            <input type="number" id="length" name="length">
+            <% if (locals.errors && locals.errors.length) {%>
+                <p class="feedback"><%= locals.errors.length.msg %></p>
+            <% } %>
+            <input type="number" id="length" name="length" value="<%= locals.data && data.length%>">
         </Fieldset>
 
         <button type="submit">Enviar</button>

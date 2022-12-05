@@ -10,9 +10,6 @@
 <body>
     <main>
         <h1>Home</h1>
-        <% if (user) {%>
-        <h2>Welcome <%=user.email%></h2>
-        <% } %>
         <a href="/add">Agrega una pelicula</a>
         <ul>
             <% for( let i = 0; i < movies.length; i++ ) { %>
