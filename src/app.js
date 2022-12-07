@@ -13,13 +13,13 @@ app.listen(port,start());
 app.set('views', resolve(__dirname, './views'));
 app.set('view engine', 'ejs');
 
-app.use(express.static(resolve(__dirname,'..','public')))
-app.use(express.urlencoded({extended:true}));
-app.use(session({secret: 'Secreto'}))
+app.use(express.static(resolve(__dirname,'..','public')));
 app.use(methodOverride('m'));
+app.use(express.urlencoded({extended:true}));
+app.use(session({secret: 'Secreto', resave: true, saveUninitialized: true}));
 app.use(cookieParser());
 
 
-app.use(mainRoutes)
-app.use(usersRoutes)
-app.use((req,res,next) => {res.status(404).render('404')})
+app.use(mainRoutes);
+app.use('/users', usersRoutes);
+app.use((req,res,next) => {res.status(404).render('404')});

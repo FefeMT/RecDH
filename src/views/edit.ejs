@@ -7,9 +7,11 @@
     <title>Editando pelicula <%= movies.title %></title>
 </head>
 <body>
-    <h1>Editando pelicula <%= movies.title%></h1>
     <form method="POST" action="/edit/<%=movies.id%>?m=PUT">
         <Fieldset>
+            <legend>
+                <h2>Editando pelicula <%= movies.title%></h2>
+            </legend>
             <legend>Titulo</legend>
             <% if (locals.errors && locals.errors.title) {%>
                 <p class="feedback"><%= locals.errors.title.msg %></p>

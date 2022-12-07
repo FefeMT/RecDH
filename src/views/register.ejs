@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+</head>
+<body>
+    <form action="/users/register" method="POST">
+        <Fieldset>
+            <legend>
+                <h2>Registro</h2>
+            </legend>
+            <legend>Nombre</legend>
+            <% if (locals.errors && locals.errors.name) {%>
+                <p class="feedback"><%= locals.errors.name.msg %></p>
+            <% } %>
+            <input type="text" name="name" id="name" value="<%= locals.data && data.name%>">
+            <legend>Email</legend>
+            <% if (locals.errors && locals.errors.email) {%>
+                <p class="feedback"><%= locals.errors.email.msg %></p>
+            <% } %>
+            <input type="email" name="email" id="email" value="<%= locals.errors && !locals.errors.email && locals.data.email ? locals.data.email : null %>">
+            <legend>Contraseña</legend>
+            <% if (locals.errors && locals.errors.password) {%>
+                <p class="feedback"><%= locals.errors.password.msg %></p>
+            <% } %>
+            <input type="password" name="password" id="password" value="<%= locals.errors && !locals.errors.password && locals.data.password ? locals.data.password : null %>">
+        </Fieldset>
+            <button type="submit">Enviar</button>
+            <button type="reset">Borrar</button>
+    </form>
+    <a href="/">Volver</a>
+</body>
+</html>

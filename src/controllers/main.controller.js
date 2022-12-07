@@ -22,10 +22,9 @@ const add = (req,res) => {
     let results = validationResult(req);
     if (!results.isEmpty()){
         let errors = results.mapped();
-        res.render ('create',{ errors: errors, data: req.body})
-    }
-    else {
-    let create= db.movie.create({
+        res.render ('create', {errors: errors, data: req.body})
+    } else {
+    let create = db.movie.create({
         title: req.body.title,
         rating: req.body.rating,
         awards: req.body.awards,

@@ -7,9 +7,11 @@
     <title>Create</title>
 </head>
 <body>
-    <h1>Agrega una pelicula</h1>
     <form method="POST" action="/add">
         <Fieldset>
+            <legend>
+                <h2>Agrega una pelicula</h2>
+            </legend>
             <legend>Titulo</legend>
             <% if (locals.errors && locals.errors.title) {%>
             <p class="feedback"><%= locals.errors.title.msg %></p>
@@ -36,7 +38,6 @@
             <% } %>
             <input type="number" id="length" name="length" value="<%= locals.data && data.length%>">
         </Fieldset>
-
         <button type="submit">Enviar</button>
         <button type="reset">Borrar progreso</button>
     </form>
