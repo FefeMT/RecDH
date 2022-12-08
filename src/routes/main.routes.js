@@ -9,5 +9,6 @@ router.post('/add', validations, controller.add);
 router.get('/edit/:id', controller.edit);
 router.put('/edit/:id', validations, controller.save);
 router.delete('/delete/:id', controller.borrar);
-router.get('/:id', controller.detail);
+router.get('/detail/:id', controller.detail);
+
 module.exports = router;

@@ -26,25 +26,23 @@ const controller = {
         }
     },
     access: (req,res) => {
-        let results = validationResult(req);
+        let results = validationResult(req)
         if (!results.isEmpty()) {
-            let errors = results.mapped();
-            return res.render('login', {
-                errors: errors,
-                data: req.body
-            });
-        } else {
-        res.cookie('user',req.body.email,{maxAge: 1000 * 60 * 3});
-        let user = db.user.findAll({where:{email:req.body.email}})
-        req.session.user = user.email;
-        res.redirect('/');
+            let errors = results.mapped()
+            res.render('login', {errors: errors, data: req.body})
         }
+        res.cookie('user', req.body.email, {maxAge: 1000 * 60 * 3})
+        const one = db.user.findOne({where:{email:req.cookies.user}})
+        const find = one => req.session.user = one
+        const success = user => res.redirect('/')
+        const errors = error => res.send(error)
+        return one.then(find).then(success).catch(errors);
     },
     logout: (req,res) => {
         delete req.session.user
         res.cookie('user',null,{maxAge: -1})
         return res.redirect('/');
-    },
+    }
 }
 
 module.exports = controller;

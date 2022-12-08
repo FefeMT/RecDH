@@ -10,15 +10,25 @@
 <body>
     <main>
         <h1>Home</h1>
-        <nav>
-            <a href="/users/login">Login</a>
-            <a href="/users/register">Register</a>
-        </nav>
-        <a href="/add">Agrega una pelicula</a>
+        <% if (!user) { %>
+            <h2>Bienvenido invitado</h2>
+            <nav>
+                <a href="/users/login">Login</a>
+                <a href="/users/register">Registro</a>
+            </nav>
+        <% } else { %>
+            <h2>Bienvenido <%= user.name%></h2>
+            <nav>
+                <a href="/users/logout">Logout</a>
+            </nav>
+            <% if (user.rol == 1) { %>
+                <a href="/add">Agrega una pelicula</a>
+            <% } %>
+        <% } %>
         <ul>
             <% for( let i = 0; i < movies.length; i++ ) { %>
             <li>
-                <a href="/<%= movies[i].id %>"><%= movies[i].title %></a>
+                <a href="/detail/<%= movies[i].id %>"><%= movies[i].title %></a>
             </li>
             <% } %>
         </ul>

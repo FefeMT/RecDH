@@ -11,7 +11,7 @@ const detail = (req,res) => {
     const one = db.movie.findByPk(req.params.id, {
         include: [{association: 'genre'},{association: 'actors'}]
     })
-    const success = movies => res.render('detail', {movies:movies})
+    const success = one => res.render('detail', {movies:one})
     const error = error => res.send(error)
     return one.then(success).catch(error);
 }
@@ -48,8 +48,7 @@ const save = (req,res) => {
     if (!results.isEmpty()){
         let errors = results.mapped();
         find.then(movies => res.render('edit', {movies:movies, errors: errors, data: req.body}));
-    }
-    else {
+    } else {
     let update = db.movie.update({
         title: req.body.title,
         rating: req.body.rating,

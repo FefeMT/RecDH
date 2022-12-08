@@ -23,10 +23,12 @@
             </li>
             <% } %>
         </ul>
-        <a href="/edit/<%=movies.id%>">Editar</a>
-        <form method="POST" action="/delete/<%=movies.id%>?m=DELETE">
-            <button type="submit">Borrar</button>
-        </form>
+        <% if (user && user.rol == 1) { %>
+            <a href="/edit/<%=movies.id%>">Editar</a>
+            <form method="POST" action="/delete/<%=movies.id%>?m=DELETE">
+                <button type="submit">Borrar</button>
+            </form>
+        <% } %>
         <a href="/">Volver</a>
 </body>
 </html>

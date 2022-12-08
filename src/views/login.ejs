@@ -8,7 +8,7 @@
 </head>
 <body>
     <main>
-        <form action="/users/login" method="post">
+        <form action="/users/login" method="POST">
             <fieldset>
                 <legend>
                     <h2>Login</h2>
@@ -30,7 +30,7 @@
                 <% } %>
                 <input type="password" name="password" id="password"
                     value="<%= locals.errors && !locals.errors.password && locals.data.password ? locals.data.password : null %>"
-                >
+                    >
             </fieldset>
                 <button type="submit">Enviar</button>
                 <button type="reset">Borrar</button>

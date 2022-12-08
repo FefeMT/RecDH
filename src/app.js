@@ -16,9 +16,9 @@ app.set('view engine', 'ejs');
 app.use(express.static(resolve(__dirname,'..','public')));
 app.use(methodOverride('m'));
 app.use(express.urlencoded({extended:true}));
-app.use(session({secret: 'Secreto', resave: true, saveUninitialized: true}));
+app.use(session({secret: 'secreto', resave: true, saveUninitialized: true}));
 app.use(cookieParser());
-
+app.use(require('./middlewares/users'));
 
 app.use(mainRoutes);
 app.use('/users', usersRoutes);

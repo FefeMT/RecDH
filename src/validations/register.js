@@ -4,6 +4,6 @@ let name = body('name').notEmpty().withMessage('Complete el campo de Nombre').ba
 let email = body('email').notEmpty().withMessage('Complete el campo de Email').bail().isEmail().withMessage('Email invalido');
 let password = body('password').notEmpty().withMessage('Complete el campo de Contraseña').bail().isLength({min:6}).withMessage('La contraseña debe tener al menos 6 caracteres');
 
-let validator = [name,email,password];
+let rValidator = [name,email,password];
 
-module.exports = validator;
+module.exports = rValidator;
