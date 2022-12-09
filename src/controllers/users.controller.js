@@ -1,4 +1,5 @@
 const db = require('../database/models/index');
+const {hashSync} = require('bcrypt');
 const {validationResult} = require('express-validator');
 
 const controller = {
@@ -17,7 +18,7 @@ const controller = {
             let create = db.user.create({
                 name: req.body.name,
                 email: req.body.email,
-                password: req.body.password,
+                password: hashSync(req.body.password, 10),
                 rol: 0
             })
             const success = user => res.redirect('/')
@@ -32,7 +33,7 @@ const controller = {
             res.render('login', {errors: errors, data: req.body})
         }
         res.cookie('user', req.body.email, {maxAge: 1000 * 60 * 3})
-        const one = db.user.findOne({where:{email:req.cookies.user}})
+        const one = db.user.findOne({where:{email:req.body.email}})
         const find = one => req.session.user = one
         const success = user => res.redirect('/')
         const errors = error => res.send(error)

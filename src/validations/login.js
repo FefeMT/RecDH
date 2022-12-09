@@ -1,4 +1,5 @@
 const db = require('../database/models/index');
+const {compareSync} = require('bcrypt');
 const {body} = require('express-validator');
 
 let email = body('email').notEmpty().withMessage('Complete el campo de Email').bail().isEmail().withMessage('Email invalido').bail().custom((value) => {
@@ -13,7 +14,7 @@ let password = body('password').notEmpty().withMessage('Complete el campo de Con
         if (!user) {
           return Promise.reject('Ususario no encontrado');
         }
-        if (user.password != value) {
+        if (!compareSync(value,user.password)) {
             return Promise.reject('Contraseña incorrecta');
         }
     });
