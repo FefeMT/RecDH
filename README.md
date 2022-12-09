@@ -8,6 +8,6 @@
 
 - Ahora, antes de poner a correr el proyecto, con el archivo de *movies_db.sql* que viene con el proyecto creamos la base de datos en phpMyAdmin(Se requiere utilizar la base de datos que viene con el proyecto para el funcionamiento correcto de la misma).
 
-- Finalmente, ejectamos el comando " _**npm test**_ " para poner el proyecto en marcha.
+- Finalmente, ejecutamos el comando " _**npm test**_ " para poner el proyecto en marcha.
 
 Ahora solo queda acceder al siguiente enlace: **http://localhost:3312** y disfrutar de las funcionalidades del proyecto.
