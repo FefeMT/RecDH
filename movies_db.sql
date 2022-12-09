@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 07-12-2022 a las 03:22:06
+-- Tiempo de generación: 09-12-2022 a las 23:26:28
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -30,16 +30,18 @@ USE `movies_db`;
 --
 
 DROP TABLE IF EXISTS `actors`;
-CREATE TABLE `actors` (
-  `id` int(10) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `actors` (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `createdAt` timestamp NULL DEFAULT NULL,
   `updatedAt` timestamp NULL DEFAULT NULL,
   `first_name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `last_name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `rating` decimal(3,1) DEFAULT NULL,
   `favorite_movie_id` int(10) UNSIGNED DEFAULT NULL,
-  `deletedAt` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `deletedAt` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `actors_favorite_movie_id_foreign` (`favorite_movie_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `actors`
@@ -103,13 +105,16 @@ INSERT INTO `actors` (`id`, `createdAt`, `updatedAt`, `first_name`, `last_name`,
 --
 
 DROP TABLE IF EXISTS `actor_movie`;
-CREATE TABLE `actor_movie` (
-  `id` int(10) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `actor_movie` (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `actor_id` int(10) UNSIGNED NOT NULL,
-  `movie_id` int(10) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `movie_id` int(10) UNSIGNED NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `actor_movie_actor_id_foreign` (`actor_id`),
+  KEY `actor_movie_movie_id_foreign` (`movie_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `actor_movie`
@@ -167,15 +172,17 @@ INSERT INTO `actor_movie` (`id`, `created_at`, `updated_at`, `actor_id`, `movie_
 --
 
 DROP TABLE IF EXISTS `genres`;
-CREATE TABLE `genres` (
-  `id` int(10) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `genres` (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `createdAt` timestamp NULL DEFAULT NULL,
   `updatedAt` timestamp NULL DEFAULT NULL,
   `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `ranking` int(10) UNSIGNED NOT NULL,
   `active` tinyint(1) NOT NULL DEFAULT 1,
-  `deletedAt` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `deletedAt` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `genres_ranking_unique` (`ranking`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `genres`
@@ -202,8 +209,8 @@ INSERT INTO `genres` (`id`, `createdAt`, `updatedAt`, `name`, `ranking`, `active
 --
 
 DROP TABLE IF EXISTS `movies`;
-CREATE TABLE `movies` (
-  `id` int(10) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `movies` (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `createdAt` timestamp NULL DEFAULT NULL,
   `updatedAt` timestamp NULL DEFAULT NULL,
   `title` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
@@ -212,8 +219,10 @@ CREATE TABLE `movies` (
   `release_date` datetime NOT NULL,
   `length` int(10) UNSIGNED DEFAULT NULL,
   `genre_id` int(10) UNSIGNED DEFAULT NULL,
-  `deletedAt` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `deletedAt` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `movies_genre_id_foreign` (`genre_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `movies`
@@ -249,97 +258,27 @@ INSERT INTO `movies` (`id`, `createdAt`, `updatedAt`, `title`, `rating`, `awards
 --
 
 DROP TABLE IF EXISTS `users`;
-CREATE TABLE `users` (
-  `id` int(10) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `createdAt` timestamp NULL DEFAULT NULL,
   `updatedAt` timestamp NULL DEFAULT NULL,
-  `rol` tinyint(4) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `rol` tinyint(4) NOT NULL DEFAULT 0,
+  `deletedAt` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `users_email_unique` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `createdAt`, `updatedAt`, `rol`) VALUES
-(1, 'Edu', 'edu@edu.com', '123456', NULL, '2022-12-07 01:49:16', '2022-12-07 01:49:16', 0);
-
---
--- Índices para tablas volcadas
---
-
---
--- Indices de la tabla `actors`
---
-ALTER TABLE `actors`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `actors_favorite_movie_id_foreign` (`favorite_movie_id`);
-
---
--- Indices de la tabla `actor_movie`
---
-ALTER TABLE `actor_movie`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `actor_movie_actor_id_foreign` (`actor_id`),
-  ADD KEY `actor_movie_movie_id_foreign` (`movie_id`);
-
---
--- Indices de la tabla `genres`
---
-ALTER TABLE `genres`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `genres_ranking_unique` (`ranking`);
-
---
--- Indices de la tabla `movies`
---
-ALTER TABLE `movies`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `movies_genre_id_foreign` (`genre_id`);
-
---
--- Indices de la tabla `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `users_email_unique` (`email`);
-
---
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla `actors`
---
-ALTER TABLE `actors`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
-
---
--- AUTO_INCREMENT de la tabla `actor_movie`
---
-ALTER TABLE `actor_movie`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
-
---
--- AUTO_INCREMENT de la tabla `genres`
---
-ALTER TABLE `genres`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
-
---
--- AUTO_INCREMENT de la tabla `movies`
---
-ALTER TABLE `movies`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
-
---
--- AUTO_INCREMENT de la tabla `users`
---
-ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `createdAt`, `updatedAt`, `rol`, `deletedAt`) VALUES
+(9, 'Edu', 'edu@edu.com', '$2b$10$/xoVOg6HW07WBy3ncfXaS.VrveyTNbc1r8MwweQOzv.BvF20fV7CK', NULL, '2022-12-09 17:24:52', '2022-12-09 17:24:52', 1, NULL),
+(10, 'Ff', 'ff@ff.com', '$2b$10$GIWuRIKW.IKC34dNyzF17u2ONiOlqf.LYFz2TXqO06qGwZFtzSc.6', NULL, '2022-12-09 17:42:55', '2022-12-09 17:42:55', 0, NULL);
 
 --
 -- Restricciones para tablas volcadas

@@ -15,14 +15,16 @@
         <% if (movies.genre) { %>
         <p>GENERO: <%=movies.genre.name%></p>
         <% } %>
-        <h3>Actores:</h3>
-        <ul>
-            <% for (let j = 0; j < movies.actors.length; j ++) { %>
-            <li>
-                <%= movies.actors[j].first_name + movies.actors[j].last_name %>
-            </li>
-            <% } %>
-        </ul>
+        <% if (movies.actors.length > 0) { %>
+            <h3>Actores:</h3>
+            <ul>
+                <% for (let j = 0; j < movies.actors.length; j ++) { %>
+                <li>
+                    <%= movies.actors[j].first_name + movies.actors[j].last_name %>
+                </li>
+                <% } %>
+            </ul>
+        <% } %>
         <% if (user && user.rol == 1) { %>
             <a href="/edit/<%=movies.id%>">Editar</a>
             <form method="POST" action="/delete/<%=movies.id%>?m=DELETE">
