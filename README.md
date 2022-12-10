@@ -10,4 +10,4 @@
 
 - Finalmente, ejecuta el comando " _**npm test**_ " para poner el proyecto en marcha.
 
-Ahora solo queda acceder al siguiente enlace: **http://localhost:3312** y disfrutar de las funcionalidades del sitio.
+- Ahora solo queda acceder al siguiente enlace: **http://localhost:3312** y disfrutar de las funcionalidades del sitio.
