@@ -4,10 +4,10 @@
 
 - Luego accede a la carpeta con el comando: " _**cd RecuperatorioDH**_ "
 
-- Una vez dentro de la carpeta, con el comando " _**npm i**_ " instalaremos todos los modulos necesarios para que el proyecto funcione correctamente.
+- Una vez dentro de la carpeta, con el comando " _**npm i**_ " instalas todos los modulos necesarios para que el funcionamiento correcto del proyecto.
 
-- Ahora, antes de poner a correr el proyecto, con el archivo de *movies_db.sql* que viene con el proyecto creamos la base de datos en phpMyAdmin(Se requiere utilizar la base de datos que viene con el proyecto para el funcionamiento correcto de la misma).
+- Ahora, con el archivo de *movies_db.sql* que viene con el proyecto, creá la base de datos en phpMyAdmin(Se requiere utilizar la base de datos que viene con el proyecto para el funcionamiento correcto de la misma).
 
-- Finalmente, ejecutamos el comando " _**npm test**_ " para poner el proyecto en marcha.
+- Finalmente, ejecuta el comando " _**npm test**_ " para poner el proyecto en marcha.
 
-Ahora solo queda acceder al siguiente enlace: **http://localhost:3312** y disfrutar de las funcionalidades del proyecto.
+Ahora solo queda acceder al siguiente enlace: **http://localhost:3312** y disfrutar de las funcionalidades del sitio.
