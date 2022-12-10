@@ -12,29 +12,29 @@
             <legend>
                 <h2>Agrega una pelicula</h2>
             </legend>
-            <legend>Titulo</legend>
+            <h4>Titulo</h4>
             <% if (locals.errors && locals.errors.title) {%>
-            <p class="feedback"><%= locals.errors.title.msg %></p>
+            <p class="feedback" style="color:Tomato;"><%= locals.errors.title.msg %></p>
             <% } %>
             <input type="text" id="title" name="title" value="<%= locals.data && data.title%>">
-            <legend>Puntaje</legend>
+            <h4>Puntaje</h4>
             <% if (locals.errors && locals.errors.rating) {%>
-                <p class="feedback"><%= locals.errors.rating.msg %></p>
+                <p class="feedback" style="color:Tomato;"><%= locals.errors.rating.msg %></p>
             <% } %>
             <input type="number" id="rating" name="rating" value="<%= locals.data && data.rating%>">
-            <legend>Premios</legend>
+            <h4>Premios</h4>
             <% if (locals.errors && locals.errors.awards) {%>
-                <p class="feedback"><%= locals.errors.awards.msg %></p>
+                <p class="feedback" style="color:Tomato;"><%= locals.errors.awards.msg %></p>
             <% } %>
             <input type="number" id="awards" name="awards" value="<%= locals.data && data.awards%>">
-            <legend>Fecha de estreno</legend>
+            <h4>Fecha de estreno</h4>
             <% if (locals.errors && locals.errors.release_date) {%>
-                <p class="feedback"><%= locals.errors.release_date.msg %></p>
+                <p class="feedback" style="color:Tomato;"><%= locals.errors.release_date.msg %></p>
             <% } %>
             <input type="date" id="release_date" name="release_date" value="<%= locals.data && data.release_date%>">
-            <legend>Duracion</legend>
+            <h4>Duracion</h4>
             <% if (locals.errors && locals.errors.length) {%>
-                <p class="feedback"><%= locals.errors.length.msg %></p>
+                <p class="feedback" style="color:Tomato;"><%= locals.errors.length.msg %></p>
             <% } %>
             <input type="number" id="length" name="length" value="<%= locals.data && data.length%>">
         </Fieldset>

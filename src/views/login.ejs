@@ -13,18 +13,18 @@
                 <legend>
                     <h2>Login</h2>
                 </legend>
-                <legend>Email</legend>
+                <h4>Email</h4>
                 <% if (locals.errors && locals.errors.email) {%>
-                    <p>
+                    <p style="color:Tomato;">
                         <%= locals.errors.email.msg %>
                     </p>
                 <% } %>
                 <input type="email" name="email" id="email"
                     value="<%= locals.errors && !locals.errors.email && locals.data.email ? locals.data.email : null %>"
                 >
-                <legend>Contraseña</legend>
+                <h4>Contraseña</h4>
                 <% if (locals.errors && locals.errors.password) {%>
-                    <p>
+                    <p style="color:Tomato;">
                         <%= locals.errors.password.msg %>
                     </p>
                 <% } %>

@@ -32,7 +32,7 @@ const controller = {
             let errors = results.mapped()
             res.render('login', {errors: errors, data: req.body})
         }
-        res.cookie('user', req.body.email, {maxAge: 1000 * 60 * 3})
+        res.cookie('user', req.body.email, {maxAge: 1000 * 60 * 60 * 8})
         const one = db.user.findOne({where:{email:req.body.email}})
         const find = one => req.session.user = one
         const success = user => res.redirect('/')

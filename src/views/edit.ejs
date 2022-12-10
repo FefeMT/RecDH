@@ -14,7 +14,7 @@
             </legend>
             <legend>Titulo</legend>
             <% if (locals.errors && locals.errors.title) {%>
-                <p class="feedback"><%= locals.errors.title.msg %></p>
+                <p class="feedback" style="color:Tomato;"><%= locals.errors.title.msg %></p>
             <% } %>
             <input type="text" id="title" name="title" <% if (locals.data && data.title) { %>
                 value="<%= data.title %>"
@@ -24,9 +24,9 @@
             >
             <legend>Puntaje</legend>
             <% if (locals.errors && locals.errors.rating) {%>
-                <p class="feedback"><%= locals.errors.rating.msg %></p>
+                <p class="feedback" style="color:Tomato;"><%= locals.errors.rating.msg %></p>
             <% } %>
-            <input type="number" id="rating" name="rating"<% if (locals.data && data.rating) { %>
+            <input type="number" id="rating" name="rating" <% if (locals.data && data.rating) { %>
                 value="<%= data.rating %>"
                 <% } else { %>
                 value="<%= movies.rating %>"
@@ -34,7 +34,7 @@
             >
             <legend>Premios</legend>
             <% if (locals.errors && locals.errors.awards) {%>
-                <p class="feedback"><%= locals.errors.awards.msg %></p>
+                <p class="feedback" style="color:Tomato;"><%= locals.errors.awards.msg %></p>
             <% } %>
             <input type="number" id="awards" name="awards"<% if (locals.data && data.awards) { %>
                 value="<%= data.awards %>"
@@ -44,7 +44,7 @@
             >
             <legend>Fecha de estreno</legend>
             <% if (locals.errors && locals.errors.release_date) {%>
-                <p class="feedback"><%= locals.errors.release_date.msg %></p>
+                <p class="feedback" style="color:Tomato;"><%= locals.errors.release_date.msg %></p>
             <% } %>
             <input type="date" id="release_date" name="release_date"<% if (locals.data && data.release_date) { %>
                 value="<%= data.release_date %>"
@@ -54,7 +54,7 @@
             >
             <legend>Duracion</legend>
             <% if (locals.errors && locals.errors.length) {%>
-                <p class="feedback"><%= locals.errors.length.msg %></p>
+                <p class="feedback" style="color:Tomato;"><%= locals.errors.length.msg %></p>
             <% } %>
             <input type="number" id="length" name="length"<% if (locals.data && data.length) { %>
                 value="<%= data.length %>"
