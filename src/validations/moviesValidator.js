@@ -1,6 +1,13 @@
+const db = require('../database/models/index');
 const {body} = require('express-validator');
 
-let title = body('title').notEmpty().withMessage('Complete el campo de Titulo').bail().isLength({max:499}).withMessage('Titulo demaciado largo');
+let title = body('title').notEmpty().withMessage('Complete el campo de Titulo').bail().isLength({max:499}).withMessage('Titulo demaciado largo').bail().custom((value) => {
+    return db.movie.findOne({where:{title:value}}).then(movie => {
+        if (movie) {
+          return Promise.reject('Pelicula ya registrada');
+        }
+    })
+})
 let rating = body('rating').notEmpty().withMessage('Complete el campo de Puntaje').bail().isDecimal().withMessage('Ingrese in valor Numerico').bail().custom((value) => {
     if (value < 0 || value > 10){
         return Promise.reject('Ingrese un numero entre el 0 y el 10');
