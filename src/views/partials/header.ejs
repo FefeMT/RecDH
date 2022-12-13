@@ -1,0 +1,15 @@
+<header>
+    <a href="/" title="Logo">
+        <img src="../img/logo-DH.png" alt="Logo" id="Logo">
+    </a>
+    <% if (!user) { %>
+        <nav>
+            <a href="/users/login" title="Login"><i class="fa-solid fa-right-to-bracket"></i></a>
+            <a href="/users/register" title="Register"><i class="fa-solid fa-user-plus"></i></a>
+        </nav>
+    <% } else { %>
+        <nav>
+            <a href="/users/logout" title="Logout"><i class="fa-solid fa-right-from-bracket"></i></a>
+        </nav>
+    <% } %>
+</header>

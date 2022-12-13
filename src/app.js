@@ -19,6 +19,7 @@ app.use(express.urlencoded({extended:true}));
 app.use(session({secret: 'secreto', resave: true, saveUninitialized: true}));
 app.use(cookieParser());
 app.use(require('./middlewares/users'));
+app.use(require('./middlewares/style'));
 
 app.use(mainRoutes);
 app.use('/users', usersRoutes);

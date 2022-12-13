@@ -1,36 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include("./partials/head.ejs")  %>
     <title>Registro</title>
 </head>
 <body>
-    <form action="/users/register" method="POST">
-        <Fieldset>
-            <legend>
-                <h2>Registro</h2>
-            </legend>
-            <h4>Nombre</h4>
-            <% if (locals.errors && locals.errors.name) {%>
-                <p class="feedback" style="color:Tomato;"><%= locals.errors.name.msg %></p>
-            <% } %>
-            <input type="text" name="name" id="name" value="<%= locals.data && data.name%>">
-            <h4>Email</h4>
-            <% if (locals.errors && locals.errors.email) {%>
-                <p class="feedback" style="color:Tomato;"><%= locals.errors.email.msg %></p>
-            <% } %>
-            <input type="email" name="email" id="email" value="<%= locals.errors && !locals.errors.email && locals.data.email ? locals.data.email : null %>">
-            <h4>Contraseña</h4>
-            <% if (locals.errors && locals.errors.password) {%>
-                <p class="feedback" style="color:Tomato;"><%= locals.errors.password.msg %></p>
-            <% } %>
-            <input type="password" name="password" id="password" value="<%= locals.errors && !locals.errors.password && locals.data.password ? locals.data.password : null %>">
-        </Fieldset>
-            <button type="submit">Enviar</button>
-            <button type="reset">Borrar</button>
-    </form>
-    <a href="/">Volver</a>
+    <main>
+        <h1 id="welcome-login">Te damos la bienvenida :)</h1>
+        <div id="login">
+            <img src="../img/logo-DH.png" alt="DigitalHouse" id="logoDH">
+            <form action="/users/register" method="POST">
+                <Fieldset>
+                    <h2 id="register-title">Registro</h2>
+                    <h4>Nombre:</h4>
+                    <% if (locals.errors && locals.errors.name) {%>
+                        <p class="feedback"><%= locals.errors.name.msg %></p>
+                    <% } %>
+                    <input type="text" name="name" id="name" value="<%= locals.data && data.name%>">
+                    <h4>Email:</h4>
+                    <% if (locals.errors && locals.errors.email) {%>
+                        <p class="feedback"><%= locals.errors.email.msg %></p>
+                    <% } %>
+                    <input type="text" name="email" id="email" value="<%= locals.errors && !locals.errors.email && locals.data.email ? locals.data.email : null %>">
+                    <h4>Contraseña:</h4>
+                    <% if (locals.errors && locals.errors.password) {%>
+                        <p class="feedback"><%= locals.errors.password.msg %></p>
+                    <% } %>
+                    <input type="password" name="password" id="password" value="<%= locals.errors && !locals.errors.password && locals.data.password ? locals.data.password : null %>">
+                </Fieldset>
+                <fieldset>
+                    <button type="submit">Enviar</button>
+                    <button type="reset">Borrar</button>
+                </fieldset>
+            </form>
+            <a href="/" class="volver" title="Home"><i class="fa-solid fa-house"></i></a>
+            <a href="https://www.digitalhouse.com/ar" class="digitalHouse"><img src="../img/digitalHouse.svg" alt="DigitalHouse"></a>
+            <nav>
+                <a href="https://www.youtube.com/watch?v=eBGIQ7ZuuiU" id="terminosYCondiciones">Terminos y Condiciones</a>
+                <a href="https://www.youtube.com/watch?v=05dT34hGRdg" id="politicaDePrivacidad">Política de Privacidad</a>
+            </nav>
+        </div>
+    </main>
 </body>
 </html>

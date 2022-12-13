@@ -1,0 +1,16 @@
+body{
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.8rem;
+    color: #343334;
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0rem;
+    padding: 0rem;
+    border: none;
+}
+
+img{
+    max-width: 100%;
+}
