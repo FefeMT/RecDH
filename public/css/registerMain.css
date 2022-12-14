@@ -34,19 +34,19 @@ body main div img#logoDH{
     display: flex;
     align-self: center;
     padding:.4rem;
-    width: 35vw;
+    width: 30vw;
 }
 body main div a img{
     display: flex;
     align-self: center;
-    width: 35vw;
+    width: 27vw;
 }
 body main div a.volver{
     display: flex;
     text-decoration: none;
     background-color: #d53f25;
     border-radius: .4rem;
-    margin: .5rem;
+    margin: .2rem;
     padding: .5rem;
     color: white;
     align-self: center;
@@ -57,6 +57,8 @@ body main div a.volver:hover{
 body main div a.digitalHouse{
     display: flex;
     margin: .5rem;
+    margin-top: .2rem;
+    margin-bottom: .2rem;
     padding: .4rem;
     align-self: center;
     width: 25vw;
@@ -65,8 +67,8 @@ body main div nav{
     display: flex;
     justify-content: space-around;
     align-content: center;
+    text-align: center;
     margin: .5rem;
-    padding: .4rem;
 }
 body main div nav a{
     display: flex;
@@ -81,6 +83,10 @@ body main div form fieldset{
     display: flex;
     flex-direction: column;
     margin: .5rem;
+    margin-top: 0rem;
+}
+body main div form fieldset.buttonFieldset{
+    margin-bottom: 0;
 }
 body main div form fieldset #register-title{
     display: flex;
@@ -92,6 +98,7 @@ body main div form fieldset h4{
     display: flex;
     color: #303030;
     margin: .5rem;
+    margin-bottom: .3rem;
     font-size: 1rem;
 }
 body main div form fieldset p.feedback{
@@ -112,7 +119,7 @@ body main div form fieldset button{
     justify-content: center;
     color: white;
     margin: .5rem;
-    padding: .9rem;
+    padding: .7rem;
     border-radius: .4rem;
 }
 body main div form fieldset button:hover{
