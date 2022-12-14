@@ -47,7 +47,7 @@ body main div a.volver{
     background-color: #d53f25;
     border-radius: .4rem;
     margin: .5rem;
-    padding: .4rem;
+    padding: .5rem;
     color: white;
     align-self: center;
 }
@@ -110,7 +110,7 @@ body main div form fieldset input{
     display: flex;
     border: 1px solid #d9d9d9;
     border-radius: .4rem;
-    padding: .4rem;
+    padding: .5rem;
 }
 body main div form fieldset button{
     display: flex;
@@ -119,7 +119,7 @@ body main div form fieldset button{
     justify-content: center;
     color: white;
     margin: .5rem;
-    padding: .4rem;
+    padding: .9rem;
     border-radius: .4rem;
 }
 body main div form fieldset button:hover{
