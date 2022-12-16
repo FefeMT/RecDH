@@ -11,3 +11,5 @@
 - Finalmente, ejecuta el comando " _**npm test**_ " para poner el proyecto en marcha.
 
 - Ahora solo queda acceder al siguiente enlace: **http://localhost:3312** y disfrutar de las funcionalidades del sitio.
+
+(Es necesario tener ya descargado XAMPP y tener la base de datos SQL corriendo en el puerto 3333)
