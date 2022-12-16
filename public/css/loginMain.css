@@ -1,19 +1,37 @@
 body {
     display: flex;
-    background-image: url('../img/login-bg-DH.jpeg');
+    position: fixed;
+    right: 0;
+    bottom: 0;
     width: 100vw;
     height: 100vh;
 }
+body video#bg-video{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    transform: translateX(-50%) translateY(-50%);
+    background-size: cover;
+}
 body main{
     display: flex;
+    position: fixed;
+    right: 0;
+    bottom: 0;
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
+    background-color: rgba(0, 0, 0, 0.512);
     width: 100vw;
     height: 100vh;
 }
 body main h1{
-    display: flex;
+    display: none;
     color: white;
     font-size: 3rem;
     text-align: center;
@@ -26,20 +44,19 @@ body main div{
     justify-content: stretch;
     align-items:stretch;
     background-color: white;
-    border-radius: 1rem;
+    border-radius: .5rem;
     margin: 3rem;
     padding: .5rem;
 }
 body main div img#logoDH{
     display: flex;
     align-self: center;
-    padding:.4rem;
-    width: 30vw;
+    width: 50vw;
 }
 body main div a img{
     display: flex;
     align-self: center;
-    width: 27vw;
+    width: 70%;
 }
 body main div a.volver{
     display: flex;
@@ -56,24 +73,26 @@ body main div a.volver:hover{
 }
 body main div a.digitalHouse{
     display: flex;
-    margin: .5rem;
+    justify-content: center;
+    margin: 1rem;
     margin-top: .2rem;
     margin-bottom: .2rem;
     padding: .4rem;
     align-self: center;
-    width: 25vw;
+    max-width: fit-content;
 }
 body main div nav{
     display: flex;
     justify-content: space-around;
     align-content: center;
     text-align: center;
-    margin: .5rem;
+    margin: .2rem;
 }
 body main div nav a{
     display: flex;
     text-decoration: none;
     color: #4349b5;
+    margin: .3rem;
 }
 body main div form{
     display: flex;
@@ -99,7 +118,7 @@ body main div form fieldset #login-title{
     display: flex;
     color: #303030;
     text-decoration: underline #d53f25;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
 body main div form fieldset h4{
     display: flex;
@@ -131,4 +150,31 @@ body main div form fieldset button{
 }
 body main div form fieldset button:hover{
     background-color: #1B207B;
+}
+@media screen and (min-width: 600px){
+    body main div{
+        width: 50vw;
+    }
+    body main div a.digitalHouse{
+        max-width: fit-content;
+    }
+    body main div a img{
+        width: 70%;
+    }
+}
+@media screen and (min-width: 768px){
+    body main h1{
+        display: flex;
+    }
+    body main div{
+        max-width: 40vw;
+    }
+    body main div form fieldset #login-title{
+        font-size: 1.4rem;
+    }
+}
+@media screen and (min-width: 1024px){
+    body main div{
+        max-width: 30vw;
+    }
 }
